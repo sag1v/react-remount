@@ -13,10 +13,14 @@
     "npm": ">=5"
   },
   "scripts": {
+    "lint:fix": "eslint src/**/*.js --fix",
+    "lint:watch": "esw --watch --fix src/**/*.js",
     "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
+    "prebuild": "npm run lint:fix",
     "build": "rollup -c",
-    "start": "rollup -c -w",
+    "start": "concurrently -k -r -s all \"rollup -c -w\" \"npm run lint:watch\" \"npm run example\"",
+    "example": "cd ./example && npm start",
     "prepare": "npm run build",
     "predeploy": "cd example && npm install && npm run build",
     "deploy": "gh-pages -d example/build"
@@ -33,7 +37,10 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "concurrently": "^4.0.1",
     "cross-env": "^5.1.4",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "eslint": "^5.0.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-config-standard-react": "^6.0.0",
@@ -42,7 +49,12 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-standard": "^3.1.0",
+    "eslint-watch": "^4.0.2",
     "gh-pages": "^1.2.0",
+    "hoist-non-react-statics": "^3.0.1",
+    "invariant": "^2.2.4",
+    "prettier": "1.14.2",
+    "prettier-eslint": "^8.8.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
@@ -52,7 +64,8 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-postcss": "^1.6.2",
-    "rollup-plugin-url": "^1.4.0"
+    "rollup-plugin-url": "^1.4.0",
+    "sinon": "^7.0.0"
   },
   "files": [
     "dist"

@@ -1,6 +1,6 @@
 # react-remount
 
-> A simple react HOC that inject a predifined prop as a key to the wrapped component, thus ensuring a re-mount (state reset) whenever the prop changed
+> A simple component that injects a pre-defined prop as a key to the wrapped component, thus ensuring a re-mounting (a state reset) each time this prop is changed
 
 [![NPM](https://img.shields.io/npm/v/react-remount.svg)](https://www.npmjs.com/package/react-remount) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -14,7 +14,6 @@ npm install --save react-remount
 
 ```jsx
 import React, { Component } from 'react';
-
 import withRemount from 'react-remount';
 
 class MyLib extends Component {
@@ -29,7 +28,7 @@ class MyLib extends Component {
 MyLib = withRemount(MyLib, 'name');
 export default MyLib;
 ```
-#### Whenever the "`name` prop will change, it will trigger a re-mount for `MyLib`.
+#### Whenever the `name` prop will change, it will make `MyLib` to unmount and mount again.
 
 ## License
 

@@ -60,12 +60,3 @@ it('forwardKey as function -> should call componentWillUnmount on key change', (
   expect(didMount.callCount).toBe(3);
   expect(willUnmount.callCount).toBe(2);
 });
-
-// it('should pass ref forward to wrapped component', () => {
-//   const myKey = 'prop1';
-//   const WithRemount = withRemount(Test, myKey);
-//   const wrapper = mount(<WithRemount ref={ref => this.myRef = ref} prop1='prop1' prop2='prop2' />);
-//   const Child = wrapper.find(Test);
-//   const passedKey = Child.key();
-//   expect(passedKey).toBe(myKey);
-// });

@@ -1,6 +1,6 @@
 {
   "name": "react-remount",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple react HOC that inject a predifined key to ensure remount for the wrapped component when the key changed",
   "author": "sag1v",
   "license": "MIT",
@@ -69,5 +69,14 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "react",
+    "remount",
+    "shouldComponentRemount",
+    "key",
+    "unmount",
+    "reset",
+    "state"
   ]
 }

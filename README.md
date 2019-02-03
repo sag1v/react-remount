@@ -18,17 +18,27 @@ import withRemount from 'react-remount';
 
 class MyLib extends Component {
   render () {
-    const {name} = this.props
+    const {firstName, lastName} = this.props
     return (
-      <div>{`Hello ${name}`}</div>
+      <div>{`Hello ${firstName} ${lastName}`}</div>
     )
   }
 }
 
-MyLib = withRemount(MyLib, 'name');
+MyLib = withRemount(MyLib, 'firstName');
 export default MyLib;
 ```
-#### Whenever the `name` prop will change, it will make `MyLib` to unmount and mount again.
+
+### Now when ever we use `MyLib`, `react-remount` will inject the value of `firstName` as a key.
+```
+<MyLib firstName="John" lastName="Doe>
+```
+
+*We can also pass a function to `withRemount`, as long as this function returns a string*.  
+*This is helpful when you want to chain multiple props as your key*:
+```
+MyLib = withRemount(MyLib, props => props.firstName + props.lastName);
+```
 
 ## License
 

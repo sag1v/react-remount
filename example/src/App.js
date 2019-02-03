@@ -20,7 +20,7 @@ class MyLib extends Component {
   }
 }
 
-MyLib = withRemount(MyLib, "shouldRemountProp");
+MyLib = withRemount(MyLib, props => console.log(props) || props.shouldRemountProp + props.someProp1);
 
 /** ----------------------------- */
 
@@ -28,10 +28,6 @@ export default class App extends Component {
   state = {
     someValue: '',
     someOtherValue: ''
-  }
-
-  componentDidMount(){
-    console.log(this.lib)
   }
 
   onChange = ({ target }) => this.setState({ [target.name]: target.value });

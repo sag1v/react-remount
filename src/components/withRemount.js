@@ -20,7 +20,7 @@ function withRemount(Component, forwardKey) {
         // we accept a function (props) => props.key
         asKey = forwardKey(rest);
         const asKeyType = typeof asKey;
-        const isKeyValidString = asKeyType === 'string' && asKey !== '';
+        const isKeyValidString = asKeyType === 'string';
         invariant(isKeyValidString, invariantMessageType(asKeyType, asKey));
       } else {
         // we accept a string "key"
